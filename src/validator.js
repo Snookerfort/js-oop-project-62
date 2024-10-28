@@ -1,14 +1,20 @@
 import StringSchema from './string.js';
+import NumberSchema from './number.js';
 
 class Validator {
   name = 'validator';
 
   schemas = {
     string: StringSchema,
+    number: NumberSchema,
   };
 
   string() {
     return this.createSchema('string');
+  }
+
+  number() {
+    return this.createSchema('number');
   }
 
   createSchema(name) {

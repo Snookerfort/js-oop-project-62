@@ -1,0 +1,43 @@
+import Validator from '../src/validator.js';
+
+describe('Number schema', () => {
+  let validator;
+
+  beforeEach(() => {
+    validator = new Validator();
+  });
+
+  test('number schema should be defined', () => {
+    const schema = validator.number();
+    expect(schema).toBeDefined();
+  });
+
+  test('test require method', () => {
+    const schema = validator.number();
+    expect(schema.isValid()).toBe(true);
+    schema.required();
+    expect(schema.isValid(0)).toBe(true);
+    expect(schema.isValid(1)).toBe(true);
+    expect(schema.isValid(null)).toBe(false);
+    expect(schema.isValid()).toBe(false);
+  });
+
+  test('test positive method', () => {
+    const schema = validator.number();
+    schema.positive();
+    expect(schema.isValid(2)).toBe(true);
+    expect(schema.isValid(0)).toBe(false);
+    expect(schema.isValid(-1)).toBe(false);
+  });
+
+  test('test range method', () => {
+    const schema = validator.number();
+    schema.range(-5, 5);
+    expect(schema.isValid(-4)).toBe(true);
+    expect(schema.isValid(-5)).toBe(true);
+    expect(schema.isValid(5)).toBe(true);
+    expect(schema.isValid(0)).toBe(true);
+    expect(schema.isValid(6)).toBe(false);
+    expect(schema.isValid(-6)).toBe(false);
+  });
+});

@@ -13,7 +13,7 @@ describe('Test validator', () => {
 
   test('wrong schema', () => {
     const fakeSchemaName = 'invalid schema name';
-    const expectedMessage = `Schema with name "${fakeSchemaName}" is not defined`
+    const expectedMessage = `Schema with name "${fakeSchemaName}" is not defined`;
     expect(() => validator.createSchema(fakeSchemaName)).toThrow(expectedMessage);
   });
 });
