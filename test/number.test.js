@@ -12,14 +12,18 @@ describe('Number schema', () => {
     expect(schema).toBeDefined();
   });
 
+  test('test invalid types', () => {
+    const schema = validator.number();
+    expect(schema.isValid('qwq')).toBe(false);
+    expect(schema.isValid({})).toBe(false);
+  });
+
   test('test require method', () => {
     const schema = validator.number();
-    expect(schema.isValid()).toBe(true);
     schema.required();
     expect(schema.isValid(0)).toBe(true);
     expect(schema.isValid(1)).toBe(true);
     expect(schema.isValid(null)).toBe(false);
-    expect(schema.isValid()).toBe(false);
   });
 
   test('test positive method', () => {

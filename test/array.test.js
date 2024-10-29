@@ -12,6 +12,13 @@ describe('Array schema', () => {
     expect(schema).toBeDefined();
   });
 
+  test('test invalid types', () => {
+    const schema = validator.array();
+    expect(schema.isValid('qwq')).toBe(false);
+    expect(schema.isValid({})).toBe(false);
+    expect(schema.isValid(12)).toBe(false);
+  });
+
   test('test require method', () => {
     const schema = validator.array();
     expect(schema.isValid(null)).toBe(true);

@@ -17,6 +17,10 @@ class StringSchema extends Schema {
   }
 
   isValid(value) {
+    if (this.isInvalidType(value)) {
+      return false;
+    }
+
     return this.checkRequired(value)
       && this.checkMinLength(value)
       && this.checkContains(value);
@@ -32,6 +36,11 @@ class StringSchema extends Schema {
 
   checkContains(value) {
     return this.config.contains ? value.includes(this.config.contains) : true;
+  }
+
+  /* eslint-disable class-methods-use-this */
+  isInvalidType(value) {
+    return !(typeof value === 'string' || value === null);
   }
 }
 

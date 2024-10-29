@@ -12,6 +12,9 @@ class ArraySchema extends Schema {
   }
 
   isValid(value) {
+    if (this.isInvalidType(value)) {
+      return false;
+    }
     return this.checkRequired(value) && this.checkSizeof(value);
   }
 
@@ -21,6 +24,11 @@ class ArraySchema extends Schema {
 
   checkSizeof(value) {
     return this.config.sizeof ? value.length === this.config.sizeof : true;
+  }
+
+  /* eslint-disable class-methods-use-this */
+  isInvalidType(value) {
+    return !(Array.isArray(value) || value === null);
   }
 }
 

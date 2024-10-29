@@ -17,6 +17,10 @@ class NumberSchema extends Schema {
   }
 
   isValid(value) {
+    if (this.isInvalidType(value)) {
+      return false;
+    }
+
     return this.checkRequired(value)
       && this.checkPositive(value)
       && this.checkRange(value);
@@ -34,6 +38,11 @@ class NumberSchema extends Schema {
     return this.config.range
       ? (value >= this.config.range.min) && (value <= this.config.range.max)
       : true;
+  }
+
+  /* eslint-disable class-methods-use-this */
+  isInvalidType(value) {
+    return !(Number.isFinite(value) || value === null);
   }
 }
 
