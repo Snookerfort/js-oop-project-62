@@ -1,6 +1,18 @@
 import Schema from './schema.js';
 
 class NumberSchema extends Schema {
+  static positive(value) {
+    return value > 0;
+  }
+
+  static required(value) {
+    return Number.isFinite(value);
+  }
+
+  static range(value, configValue) {
+    return (value >= configValue.min) && (value <= configValue.max);
+  }
+
   required() {
     this.updateConfig('required', true);
     return this;
@@ -14,30 +26,6 @@ class NumberSchema extends Schema {
   range(min, max) {
     this.updateConfig('range', { min, max });
     return this;
-  }
-
-  isValid(value) {
-    if (this.isInvalidType(value)) {
-      return false;
-    }
-
-    return this.checkRequired(value)
-      && this.checkPositive(value)
-      && this.checkRange(value);
-  }
-
-  checkPositive(value) {
-    return this.config.positive ? value > 0 : true;
-  }
-
-  checkRequired(value) {
-    return this.config.required ? Number.isFinite(value) : true;
-  }
-
-  checkRange(value) {
-    return this.config.range
-      ? (value >= this.config.range.min) && (value <= this.config.range.max)
-      : true;
   }
 
   /* eslint-disable class-methods-use-this */
