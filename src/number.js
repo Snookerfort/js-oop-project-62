@@ -30,7 +30,7 @@ class NumberSchema extends Schema {
 
   /* eslint-disable class-methods-use-this */
   isInvalidType(value) {
-    return !(Number.isFinite(value) || value === null);
+    return !(Number.isFinite(value) || value === null || value === undefined);
   }
 }
 

@@ -22,6 +22,7 @@ describe('Array schema', () => {
   test('test require method', () => {
     const schema = validator.array();
     expect(schema.isValid(null)).toBe(true);
+    expect(schema.isValid(undefined)).toBe(true);
     schema.required();
     expect(schema.isValid(null)).toBe(false);
     expect(schema.isValid([])).toBe(true);

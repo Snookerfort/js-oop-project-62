@@ -21,6 +21,8 @@ describe('String schema', () => {
   test('test require method', () => {
     const schema = validator.string();
     expect(schema.isValid('')).toBe(true);
+    expect(schema.isValid(null)).toBe(true);
+    expect(schema.isValid(undefined)).toBe(true);
     schema.required();
     expect(schema.isValid('test')).toBe(true);
     expect(schema.isValid(null)).toBe(false);

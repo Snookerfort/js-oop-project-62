@@ -30,7 +30,7 @@ class StringSchema extends Schema {
 
   /* eslint-disable class-methods-use-this */
   isInvalidType(value) {
-    return !(typeof value === 'string' || value === null);
+    return !(typeof value === 'string' || value === null || value === undefined);
   }
 }
 

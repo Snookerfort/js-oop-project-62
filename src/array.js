@@ -21,7 +21,7 @@ class ArraySchema extends Schema {
 
   /* eslint-disable class-methods-use-this */
   isInvalidType(value) {
-    return !(Array.isArray(value) || value === null);
+    return !(Array.isArray(value) || value === null || value === undefined);
   }
 }
 

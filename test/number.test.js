@@ -20,6 +20,9 @@ describe('Number schema', () => {
 
   test('test require method', () => {
     const schema = validator.number();
+    expect(schema.isValid(0)).toBe(true);
+    expect(schema.isValid(null)).toBe(true);
+    expect(schema.isValid(undefined)).toBe(true);
     schema.required();
     expect(schema.isValid(0)).toBe(true);
     expect(schema.isValid(1)).toBe(true);
