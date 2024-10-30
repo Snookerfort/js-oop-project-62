@@ -2,7 +2,7 @@ import Schema from './schema.js';
 
 class NumberSchema extends Schema {
   static positive(value) {
-    return value > 0;
+    return value >= 0;
   }
 
   static required(value) {

@@ -32,6 +32,7 @@ describe('Number schema', () => {
   test('test positive method', () => {
     const schema = validator.number();
     schema.positive();
+    expect(schema.isValid(null)).toBe(true);
     expect(schema.isValid(2)).toBe(true);
     expect(schema.isValid(0)).toBe(false);
     expect(schema.isValid(-1)).toBe(false);
