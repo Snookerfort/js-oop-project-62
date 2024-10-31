@@ -14,12 +14,12 @@ class ObjectSchema {
     if (this.isInvalidType(value)) {
       return false;
     }
-    return Object.entries(value).every(([k, v]) => this.schema[k].isValid(v));
+    return Object.entries(value ?? {}).every(([k, v]) => this.schema[k].isValid(v));
   }
 
   /* eslint-disable class-methods-use-this */
   isInvalidType(value) {
-    return !(value.constructor === Object || (!value.constructor && typeof value === 'object'));
+    return typeof value !== 'object';
   }
 }
 

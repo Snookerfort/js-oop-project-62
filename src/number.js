@@ -2,11 +2,11 @@ import Schema from './schema.js';
 
 class NumberSchema extends Schema {
   static positive(value) {
-    return value >= 0;
+    return value > 0 || value === null;
   }
 
   static required(value) {
-    return Number.isFinite(value);
+    return Boolean(value);
   }
 
   static range(value, configValue) {

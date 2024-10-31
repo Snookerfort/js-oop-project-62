@@ -21,6 +21,8 @@ describe('Object schema', () => {
 
   test('test invalid types', () => {
     const schema = validator.object();
+    expect(schema.isValid(null)).toBe(true);
+    expect(schema.isValid({})).toBe(true);
     expect(schema.isValid('qwq')).toBe(false);
     expect(schema.isValid(12)).toBe(false);
   });
