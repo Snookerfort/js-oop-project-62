@@ -12,14 +12,14 @@ describe('Object schema', () => {
     expect(schema).toBeDefined();
   });
 
-  test('test shape method', () => {
+  test('shape method', () => {
     const schema = validator.object();
     schema.shape(1).toThrow('Invalid type of schema');
     schema.shape('qwe').toThrow('Invalid type of schema');
     schema.shape([]).toThrow('Invalid type of schema');
   });
 
-  test('test invalid types', () => {
+  test('invalid types', () => {
     const schema = validator.object();
     expect(schema.isValid(null)).toBe(true);
     expect(schema.isValid({})).toBe(true);
@@ -27,7 +27,7 @@ describe('Object schema', () => {
     expect(schema.isValid(12)).toBe(false);
   });
 
-  test('test shape method', () => {
+  test('shape method', () => {
     const schema = validator.object();
     schema.shape({
       name: validator.string().required(),

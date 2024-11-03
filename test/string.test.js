@@ -12,13 +12,13 @@ describe('String schema', () => {
     expect(schema).toBeDefined();
   });
 
-  test('test invalid types', () => {
+  test('invalid types', () => {
     const schema = validator.string();
     expect(schema.isValid(1)).toBe(false);
     expect(schema.isValid({})).toBe(false);
   });
 
-  test('test require method', () => {
+  test('require method', () => {
     const schema = validator.string();
     expect(schema.isValid('')).toBe(true);
     expect(schema.isValid(null)).toBe(true);
@@ -29,13 +29,13 @@ describe('String schema', () => {
     expect(schema.isValid('')).toBe(false);
   });
 
-  test('test minLength method', () => {
+  test('minLength method', () => {
     const schema = validator.string();
     expect(schema.minLength(10).isValid('Test')).toBe(false);
     expect(schema.minLength(10).minLength(4).isValid('Test')).toBe(true);
   });
 
-  test('test contains  method', () => {
+  test('contains  method', () => {
     const schema = validator.string();
     expect(schema.contains('what').isValid('what does the fox say')).toBe(true);
     expect(schema.contains('who').isValid('what does the fox say')).toBe(false);

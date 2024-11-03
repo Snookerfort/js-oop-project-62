@@ -12,13 +12,13 @@ describe('Number schema', () => {
     expect(schema).toBeDefined();
   });
 
-  test('test invalid types', () => {
+  test('invalid types', () => {
     const schema = validator.number();
     expect(schema.isValid('qwq')).toBe(false);
     expect(schema.isValid({})).toBe(false);
   });
 
-  test('test require method', () => {
+  test('require method', () => {
     const schema = validator.number();
     expect(schema.isValid(0)).toBe(true);
     expect(schema.isValid(null)).toBe(true);
@@ -29,7 +29,7 @@ describe('Number schema', () => {
     expect(schema.isValid(null)).toBe(false);
   });
 
-  test('test positive method', () => {
+  test('positive method', () => {
     const schema = validator.number();
     schema.positive();
     expect(schema.isValid(null)).toBe(true);
@@ -38,7 +38,7 @@ describe('Number schema', () => {
     expect(schema.isValid(-1)).toBe(false);
   });
 
-  test('test range method', () => {
+  test('range method', () => {
     const schema = validator.number();
     schema.range(-5, 5);
     expect(schema.isValid(-4)).toBe(true);
