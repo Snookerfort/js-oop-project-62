@@ -1,5 +1,7 @@
 class Schema {
-  config = {};
+  constructor() {
+    this.config = {};
+  }
 
   updateConfig(key, value) {
     this.config = { ...this.config, [key]: value };

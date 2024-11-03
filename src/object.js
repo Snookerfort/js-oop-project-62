@@ -1,7 +1,9 @@
 import InvalidTypeError from './invalid-type-error.js';
 
 class ObjectSchema {
-  schema = {};
+  constructor() {
+    this.schema = {};
+  }
 
   shape(value) {
     if (this.isInvalidType(value)) {
@@ -14,12 +16,12 @@ class ObjectSchema {
     if (this.isInvalidType(value)) {
       return false;
     }
-    return Object.entries(value ?? {}).every(([k, v]) => this.schema[k].isValid(v));
+    return Object.entries(this.schema).every(([k, v]) => v.isValid(value[k] ?? null));
   }
 
   /* eslint-disable class-methods-use-this */
   isInvalidType(value) {
-    return typeof value !== 'object';
+    return typeof value !== 'object' || Array.isArray(value);
   }
 }
 

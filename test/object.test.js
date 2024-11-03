@@ -12,11 +12,11 @@ describe('Object schema', () => {
     expect(schema).toBeDefined();
   });
 
-  test('shape method', () => {
+  test('invalid shape method', () => {
     const schema = validator.object();
-    schema.shape(1).toThrow('Invalid type of schema');
-    schema.shape('qwe').toThrow('Invalid type of schema');
-    schema.shape([]).toThrow('Invalid type of schema');
+    expect(() => schema.shape(1)).toThrow('Invalid type of schema');
+    expect(() => schema.shape('qwe')).toThrow('Invalid type of schema');
+    expect(() => schema.shape([])).toThrow('Invalid type of schema');
   });
 
   test('invalid types', () => {

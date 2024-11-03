@@ -4,8 +4,6 @@ import ArraySchema from './array.js';
 import ObjectSchema from './object.js';
 
 class Validator {
-  name = 'validator';
-
   schemas = {
     string: StringSchema,
     number: NumberSchema,
