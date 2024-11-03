@@ -4,12 +4,14 @@ import ArraySchema from './array.js';
 import ObjectSchema from './object.js';
 
 class Validator {
-  schemas = {
-    string: StringSchema,
-    number: NumberSchema,
-    array: ArraySchema,
-    object: ObjectSchema,
-  };
+  constructor() {
+    this.schemas = {
+      string: StringSchema,
+      number: NumberSchema,
+      array: ArraySchema,
+      object: ObjectSchema,
+    };
+  }
 
   object() {
     return this.createSchema('object');

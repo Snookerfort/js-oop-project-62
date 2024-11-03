@@ -16,7 +16,7 @@ class ObjectSchema {
     if (this.isInvalidType(value)) {
       return false;
     }
-    return Object.entries(this.schema).every(([k, v]) => v.isValid(value[k] ?? null));
+    return Object.entries(this.schema).every(([k, v]) => v.isValid(value[k] || null));
   }
 
   /* eslint-disable class-methods-use-this */
